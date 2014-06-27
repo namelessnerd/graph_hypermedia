@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://hypermedia.demos.techlabs.accenture.com#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://hypermedia.demos.techlabs.accenture.com">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Product">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="APIEndPointResource">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ATT">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NetworkActivationServices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ClientUser">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="User"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Billing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Mandatory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Services">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Verizon">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NetworkActivationServices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#User">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NetworkActivation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mandatory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Capability">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Optional">
+    <rdfs:subClassOf rdf:resource="#Capability"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AccentureUser">
+    <rdfs:subClassOf rdf:resource="#User"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Android">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Controlling"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DeviceDataGathering">
+    <rdfs:subClassOf rdf:resource="#Optional"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Controlling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mandatory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkActivationServices">
+    <rdfs:subClassOf rdf:resource="#Services"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SiemensClient">
+    <rdfs:subClassOf rdf:resource="#ClientUser"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sprint">
+    <rdfs:subClassOf rdf:resource="#NetworkActivationServices"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AccentureHomeAutomationAccountUser">
+    <rdfs:subClassOf rdf:resource="#AccentureUser"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FruityClient">
+    <rdfs:subClassOf rdf:resource="#ClientUser"/>
+  </owl:Class>
+  <owl:Class rdf:ID="iOS">
+    <rdfs:subClassOf rdf:resource="#Controlling"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CustomerManagement">
+    <rdfs:subClassOf rdf:resource="#Optional"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Mandatory">
+    <rdfs:subClassOf rdf:resource="#Capability"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HomeAutomation">
+    <rdfs:subClassOf rdf:resource="#Product"/>
+  </owl:Class>
+  <rdf:Property rdf:ID="hypermedia_property">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="has_product_capability">
+    <rdfs:subPropertyOf rdf:resource="#hypermedia_property"/>
+    <rdfs:range rdf:resource="#Capability"/>
+    <rdfs:domain rdf:resource="#Product"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="can_confgure_home_automation_product">
+    <rdfs:subPropertyOf rdf:resource="#hypermedia_property"/>
+    <rdfs:domain rdf:resource="#AccentureHomeAutomationAccountUser"/>
+    <rdfs:range rdf:resource="#HomeAutomation"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="has_network_activation_services">
+    <rdfs:subPropertyOf rdf:resource="#hypermedia_property"/>
+    <rdfs:domain rdf:resource="#NetworkActivation"/>
+    <rdfs:range rdf:resource="#NetworkActivationServices"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="can_configure_product">
+    <rdfs:range rdf:resource="#Product"/>
+    <rdfs:subPropertyOf rdf:resource="#hypermedia_property"/>
+    <rdfs:domain rdf:resource="#User"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasControlledApp">
+    <rdfs:domain rdf:resource="#Product"/>
+    <rdfs:range rdf:resource="#Controlling"/>
+  </rdf:Property>
+  <rdf:Property rdf:ID="has_api_end_point">
+    <rdfs:subPropertyOf rdf:resource="#hypermedia_property"/>
+    <rdfs:range rdf:resource="#APIEndPointResource"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Product"/>
+          <owl:Class rdf:about="#Services"/>
+          <owl:Class rdf:about="#Capability"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <APIEndPointResource rdf:ID="network_activation_resource_end_point"/>
+  <AccentureHomeAutomationAccountUser rdf:ID="Accenture.User">
+    <can_confgure_home_automation_product>
+      <HomeAutomation rdf:ID="home_automation_product">
+        <has_product_capability>
+          <NetworkActivation rdf:ID="network_activation_capability">
+            <has_network_activation_services>
+              <Verizon rdf:ID="Verizon_US"/>
+            </has_network_activation_services>
+            <has_api_end_point>
+              <APIEndPointResource rdf:ID="network_capabilities_end_point"/>
+            </has_api_end_point>
+            <has_network_activation_services>
+              <ATT rdf:ID="ATT_US_1"/>
+            </has_network_activation_services>
+            <has_network_activation_services>
+              <ATT rdf:ID="ATT_Europe_1"/>
+            </has_network_activation_services>
+          </NetworkActivation>
+        </has_product_capability>
+        <has_product_capability>
+          <Billing rdf:ID="billing_capability">
+            <has_api_end_point>
+              <APIEndPointResource rdf:ID="billing_capabilities_1550"/>
+            </has_api_end_point>
+          </Billing>
+        </has_product_capability>
+        <has_api_end_point>
+          <APIEndPointResource rdf:ID="home_automation_info_end_point"/>
+        </has_api_end_point>
+      </HomeAutomation>
+    </can_confgure_home_automation_product>
+  </AccentureHomeAutomationAccountUser>
+  <FruityClient rdf:ID="fruity_developer">
+    <can_configure_product>
+      <HomeAutomation rdf:ID="eyeHomeSolution">
+        <has_product_capability>
+          <NetworkActivation rdf:ID="eyeHome_network_capability">
+            <has_network_activation_services rdf:resource="#ATT_US_1"/>
+            <has_api_end_point rdf:resource="#network_capabilities_end_point"/>
+          </NetworkActivation>
+        </has_product_capability>
+        <has_product_capability rdf:resource="#billing_capability"/>
+        <has_api_end_point>
+          <APIEndPointResource rdf:ID="eyeHome_info_end_point"/>
+        </has_api_end_point>
+        <hasControlledApp>
+          <iOS rdf:ID="iOSControlAppActivate"/>
+        </hasControlledApp>
+      </HomeAutomation>
+    </can_configure_product>
+  </FruityClient>
+  <Capability rdf:ID="home_automation_capability">
+    <has_api_end_point>
+      <APIEndPointResource rdf:ID="get_capabilities_for_product"/>
+    </has_api_end_point>
+  </Capability>
+  <APIEndPointResource rdf:ID="ATT_US_end_point"/>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
